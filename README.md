@@ -42,8 +42,9 @@ $ sudo apt-get update && sudo apt-get install elasticsearch
 $ sudo vim /etc/elasticsearch/elasticsearch.yml
 ```
 
-Uncomment line 55, and change to: network.host: 0.0.0.0
-Uncomment line 59, and change to: http.port: 9200
+Uncomment line 55, and change to: ```network.host: 0.0.0.0```
+
+Uncomment line 59, and change to: ```http.port: 9200```
 
 # running elastisearch
 
@@ -124,6 +125,7 @@ output {
 ```$ sudo vim /etc/logstash/logstash.yml```
 
 Uncommentline 190, and change to: ```http.host: 0.0.0.0```
+
 Uncomment 207, and change to: ```log.level: debug```
 
 ```$ sudo systemctl start logstash.service ```
