@@ -1,5 +1,6 @@
 # sending_errors_to_logstash
-Send your log erros to logstash and enjoy the power of ELK stack
+
+This repo setup elasticsearch, kibana and logstash. The message guy file will send a example message to logtash by a socket tcp connection and logstash will process an output to elasticsearch. 
 
 ELK stack requires java. Oracle JDK is recommended, so:
 
