@@ -1,4 +1,4 @@
-# sending_errors_to_logstash
+# Logstash Sender
 
 This repo setup elasticsearch, kibana and logstash. The message guy file will send a example message to logtash by a socket tcp connection and logstash will process an output to elasticsearch. 
 
