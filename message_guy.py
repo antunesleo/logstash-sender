@@ -13,8 +13,8 @@ except socket.error as ex:
 
 try:
   sock.connect((HOST, PORT))
-except socket.error, msg:
-  sys.stderr.write("[ERROR] %s\n" % msg[1])
+except socket.error as ex:
+  sys.stderr.write("[ERROR] {}".format(ex.message))
   sys.exit(2)
 
 error_message = {'@message': 'A beautiful and cool error message', '@tags': ['test']}
