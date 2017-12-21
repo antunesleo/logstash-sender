@@ -13,7 +13,7 @@ $ java -version
   Java HotSpot(TM) 64-Bit Server VM (build 25.151-b12, mixed mode)
 ```
 
-we need to configure the environment variable $JAVA_HOME:
+Configure the environment variable $JAVA_HOME:
 ```
 $ sudo vim /etc/environment
 ```
@@ -41,12 +41,14 @@ $ sudo apt-get update && sudo apt-get install elasticsearch
 $ sudo vim /etc/elasticsearch/elasticsearch.yml
 ```
 
-in line 55, uncomment and put: network.host: 0.0.0.0
-in line 59, uncomment and put: http.port: 9200
+Uncomment line 55, and change to: network.host: 0.0.0.0
+Uncomment line 59, and change to: http.port: 9200
 
 # running elastisearch
 
-go to the browser on http://localhost:9200/, you shold get this:
+``` $ sudo systemctl start elasticsearch.service ```
+
+Go to http://localhost:9200/, you should get this:
 
 ```
 {
@@ -66,8 +68,6 @@ go to the browser on http://localhost:9200/, you shold get this:
 }
 ```
 
-congrats, elastisearch is installed
-
 ### Installing kibana
 
 if something got wrong, go to the official website: https://www.elastic.co/guide/en/kibana/current/deb.html
@@ -83,7 +83,7 @@ $ sudo apt-get update && sudo apt-get install kibana
 
 ```$ sudo systemctl start kibana.service```
 
-With you browser, go to http://localhost:5601, you shold get home page of kibana
+Go to http://localhost:5601, you should get home page of kibana
 
 # Installing Logstash
 
@@ -97,7 +97,7 @@ $ sudo apt-get update && sudo apt-get install logstash
 
 ### Configuring logstash
 
-logstash its a bridge between our applications and elasticsearch. Before running logstash, we need to configure how the input will works (how our apps will communcate with logstash, by a tcp socket, for example) and where would be the output, a instance of elasticsearch.
+logstash is a bridge between our applications and elasticsearch. Before running logstash, we need to configure how the input will works (how our apps will communcate with logstash, by a tcp socket, for example) and where would be the output, a instance of elasticsearch.
 
 ```
 $ cd /etc/logstash/conf.d
@@ -122,12 +122,12 @@ output {
 
 ```$ sudo vim /etc/logstash/logstash.yml```
 
-in line 190, uncomment and put: http.host: 0.0.0.0
-in line 207, uncomment and put: log.level: debug
+Uncommentline 190, and change to: ```http.host: 0.0.0.0```
+Uncomment 207, and change to: ```log.level: debug```
 
 ```$ sudo systemctl start logstash.service ```
 
-Now, run the message_guy.py file,
+Now, run the message_guy.py file, this will send a message error to logstash
 ```$ python message_guy.py```
 
 If you want to watch logstash logs in real time, open a terminal and:
@@ -139,7 +139,7 @@ When you run the message_guy.py, you sould see this at logstash-plain.log:
 [2017-12-20T21:20:04,433][DEBUG][logstash.pipeline        ] output received {"event"=>{"host"=>"localhost", "port"=>50406, "@metdata"=>{"ip_address"=>"127.0.0.1"}, "@tags"=>["test"], "@message"=>"python test message", "@timestamp"=>2017-12-20T23:20:04.420Z, "@version"=>"1"}}
 ```
 
-Now just go to kibana, go to management page, and create a logstash-* index pattern. Go to discover and you should see a beaultiful and cool error messsage! :)
+Now just go to kibana, go to management page and create a logstash-* index pattern. Go to discover page, you should see a beaultiful and cool error messsage! :)
 
 
 
