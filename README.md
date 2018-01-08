@@ -124,9 +124,9 @@ output {
 
 ```$ sudo vim /etc/logstash/logstash.yml```
 
-Uncommentline 190, and change to: ```http.host: 0.0.0.0```
+Uncomment line 190, and change to: ```http.host: 0.0.0.0```
 
-Uncomment 207, and change to: ```log.level: debug```
+Uncomment line 207, and change to: ```log.level: debug```
 
 ```$ sudo systemctl start logstash.service ```
 
